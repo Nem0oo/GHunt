@@ -116,7 +116,9 @@ class PeoplePaHttp(GAPI):
         person = Person()
         if not data:
             return False, person
-        
+        if not data["people"]:
+            return False, person
+            
         person_data = list(data["people"].values())[0]
         await person._scrape(as_client, person_data)
 
